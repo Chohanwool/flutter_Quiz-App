@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget{
-  const StartScreen({super.key});
+  // 부모에게 전달 받아 실행할 콜백 함수
+  final void Function() onSwitchScreen;
+
+  const StartScreen({super.key, required this.onSwitchScreen});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,10 @@ class StartScreen extends StatelessWidget{
           ),
           const SizedBox(height: 30,),
           OutlinedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              // 전달받은 콜백 함수를 실행
+              onSwitchScreen();
+            },
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white
             ),
